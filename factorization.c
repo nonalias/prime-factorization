@@ -6,7 +6,7 @@
 /*   By: taehkim <taehkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 20:05:43 by taehkim           #+#    #+#             */
-/*   Updated: 2020/04/01 20:31:53 by taehkim          ###   ########.fr       */
+/*   Updated: 2020/04/01 20:44:52 by taehkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,17 @@ int	validation(char *str)
 	return (count);
 }
 
-int	stoi(char *str, int *number)
+int	stoi(char *str, unsigned int *number)
 {
 	int		size;
-	int		helper;
+	long long 	helper;
 	long long	result;
 
-	if ((size = validation(str)) == -1)
+	if ((size = validation(str)) == -1 || size > 10)
+	{
+		printf("hello\n");
 		return (0);
+	}
 	result = 0;
 	helper = 1;
 	while (--size >= 0)
@@ -42,7 +45,7 @@ int	stoi(char *str, int *number)
 		result += (helper * (str[size] - '0'));
 		helper = helper * 10;
 	}
-	if (result > INT_MAX || result < 2)
+	if (result > UINT_MAX || result < 2)
 		return (0);
 	*number = result;
 	return (1);
@@ -50,7 +53,7 @@ int	stoi(char *str, int *number)
 
 int	main(int argc, char *argv[])
 {
-	int	number;
+	unsigned int	number;
 
 	if (argc != 2)
 	{
