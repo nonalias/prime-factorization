@@ -6,12 +6,26 @@
 /*   By: taehkim <taehkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 20:05:43 by taehkim           #+#    #+#             */
-/*   Updated: 2020/04/01 20:17:45 by taehkim          ###   ########.fr       */
+/*   Updated: 2020/04/01 20:31:53 by taehkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <limits.h>
+
+int	validation(char *str)
+{
+	int	count;
+
+	count = 0;
+	while (str[count])
+	{
+		if (str[count] < '0' || str[count] > '9')
+			return (-1);
+		count++;
+	}
+	return (count);
+}
 
 int	stoi(char *str, int *number)
 {
@@ -19,9 +33,8 @@ int	stoi(char *str, int *number)
 	int		helper;
 	long long	result;
 
-	size = 0;
-	while (str[size])
-		size++;
+	if ((size = validation(str)) == -1)
+		return (0);
 	result = 0;
 	helper = 1;
 	while (--size >= 0)
