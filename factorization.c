@@ -6,7 +6,7 @@
 /*   By: taehkim <taehkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 20:05:43 by taehkim           #+#    #+#             */
-/*   Updated: 2020/04/01 21:10:15 by taehkim          ###   ########.fr       */
+/*   Updated: 2020/04/01 21:58:14 by taehkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ int	stoi(char *str, unsigned int *number)
 	long long 	helper;
 	long long	result;
 
-	if ((size = validation(str)) == -1 || size > 10)
+	if ((size = validation(str)) == -1)
+		return (-1);
+	if (size > 10)
 		return (0);
 	result = 0;
 	helper = 1;
@@ -76,15 +78,19 @@ int	main(int argc, char *argv[])
 {
 	unsigned int	number;
 	unsigned int	i;
+	int		temp;
 
 	if (argc != 2)
 	{
-		printf("Input number is WRONG\n");
+		printf("The count of inputs is incorrect\n");
 		return (1);
 	}
-	if (!stoi(argv[1], &number))
+	if ((temp = stoi(argv[1], &number)) <= 0)
 	{
-		printf("Input number is out of range\n");
+		if (temp == 0)
+			printf("Your input number is out of range\n");
+		else if (temp == -1)
+			printf("Your input number is WRONG\n");
 		return (1);
 	}
 	i = 2;
