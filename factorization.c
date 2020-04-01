@@ -6,7 +6,7 @@
 /*   By: taehkim <taehkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 20:05:43 by taehkim           #+#    #+#             */
-/*   Updated: 2020/04/01 21:58:14 by taehkim          ###   ########.fr       */
+/*   Updated: 2020/04/01 22:10:01 by taehkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	validation(char *str)
 {
-	int	count;
+	int		count;
 
 	count = 0;
 	while (str[count])
@@ -57,12 +57,12 @@ int	get_near_sqrt(unsigned int number)
 	output = 1;
 	while (output <= number / output)
 		output++;
-	return (int)(output - 1);
+	return ((int)(output - 1));
 }
 
 int	is_prime(unsigned int number)
 {
-	int	i;
+	int		i;
 
 	i = 2;
 	while (i <= get_near_sqrt(number))
